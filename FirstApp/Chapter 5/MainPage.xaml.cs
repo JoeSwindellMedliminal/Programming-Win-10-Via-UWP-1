@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace Chapter_4
+namespace Chapter_5
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -29,6 +29,12 @@ namespace Chapter_4
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            EntriesListView.Items.Add("super");
+            EntriesListView.Items.Add("extra");
+            EntriesListView.Items.Add("maximum");
+            EntriesListView.Items.Add("advanced");
+            EntriesListView.Items.Add("efficient");
+
             EntriesListView.Items.Add("super");
             EntriesListView.Items.Add("extra");
             EntriesListView.Items.Add("maximum");

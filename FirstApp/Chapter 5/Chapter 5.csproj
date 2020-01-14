@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{BBEDE8A5-4BB1-41CB-AD97-34D2CA1A6B81}</ProjectGuid>
+    <ProjectGuid>{8E3C90B7-386C-4860-8F83-C9DBA2B59490}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Chapter_4</RootNamespace>
-    <AssemblyName>Chapter 4</AssemblyName>
+    <RootNamespace>Chapter_5</RootNamespace>
+    <AssemblyName>Chapter 5</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>

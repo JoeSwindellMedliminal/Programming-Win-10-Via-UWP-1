@@ -1,7 +1,7 @@
 ﻿<Application
-    x:Class="Chapter_4.App"
+    x:Class="Chapter_5.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Chapter_4">
+    xmlns:local="using:Chapter_5">
 
 </Application>
