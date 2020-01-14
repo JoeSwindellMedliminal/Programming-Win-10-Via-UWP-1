@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Diagnostics;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +24,9 @@ namespace Chapter_7
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private RichEditBox currentRichEditBox;
+        private int counter;
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -51,9 +56,42 @@ namespace Chapter_7
             RichEditBox reb = new RichEditBox();
             reb.HorizontalAlignment = HorizontalAlignment.Stretch;
             reb.VerticalAlignment = VerticalAlignment.Stretch;
+
             pi.Content = reb;
+
+            pi.Loaded += PivotItem_Loaded;
             rootPivot.Items.Add(pi);
             rootPivot.SelectedIndex = rootPivot.Items.Count - 1;
+        }
+
+        private async void SaveEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("FirstRichEdit.rtf", Windows.Storage.CreationCollisionOption.ReplaceExisting);
+
+            IRandomAccessStream documentStream = await sampleFile.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
+            currentRichEditBox.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, documentStream);
+            documentStream.Dispose();
+        }
+
+        private void rootPivot_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Pivot p = sender as Pivot;
+            PivotItem pi = p.SelectedItem as PivotItem;
+            RichEditBox_SetFocus(pi);
+        }
+
+        private void PivotItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            PivotItem pi = sender as PivotItem;
+            RichEditBox_SetFocus(pi);
+        }
+
+        private void RichEditBox_SetFocus(PivotItem pi)
+        {
+            RichEditBox reb = pi.Content as RichEditBox;
+            reb.Focus(FocusState.Keyboard);
+            currentRichEditBox = reb;
         }
     }
 }

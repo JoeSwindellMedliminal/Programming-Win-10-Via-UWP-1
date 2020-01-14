@@ -26,6 +26,12 @@
                 Label="New" 
                 ToolTipService.ToolTip="New (Ctrl+N)" Click="CreateNewEntryButton_Click">
             </AppBarButton>
+            <AppBarButton
+                x:Name="SaveEntryButton" 
+                Icon="Save" 
+                Label="Save" 
+                ToolTipService.ToolTip="New (Ctrl+N)" Click="SaveEntryButton_Click">
+            </AppBarButton>
 
         </CommandBar>
 
@@ -34,12 +40,9 @@
         <ListView Name="EntriesListView"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" />
 
 
-        <Pivot x:Name="rootPivot" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
-            <PivotItem Header="Entry1">
+        <Pivot x:Name="rootPivot" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" GotFocus="rootPivot_GotFocus" >
+            <PivotItem Header="Entry1" Loaded="PivotItem_Loaded">
                 <RichEditBox Name="MainRichEdit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
-            </PivotItem>
-            <PivotItem Header="Entry2">
-                <RichEditBox Name="MainRichEdit2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
             </PivotItem>
         </Pivot>
 
