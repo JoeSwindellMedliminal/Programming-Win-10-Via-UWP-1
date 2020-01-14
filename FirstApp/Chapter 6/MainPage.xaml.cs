@@ -41,5 +41,19 @@ namespace Chapter_6
             EntriesListView.Items.Add("advanced");
             EntriesListView.Items.Add("efficient");
         }
+
+        private void CreateNewEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            PivotItem pi = new PivotItem();
+
+            var entryText = String.Format("Entry{0}", rootPivot.Items.Count + 1);
+            pi.Header = entryText;
+            RichEditBox reb = new RichEditBox();
+            reb.HorizontalAlignment = HorizontalAlignment.Stretch;
+            reb.VerticalAlignment = VerticalAlignment.Stretch;
+            pi.Content = reb;
+            rootPivot.Items.Add(pi);
+            rootPivot.SelectedIndex = rootPivot.Items.Count - 1;
+        }
     }
 }

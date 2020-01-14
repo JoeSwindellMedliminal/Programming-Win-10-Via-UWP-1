@@ -11,6 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -18,17 +19,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <CalendarView HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0"/>
+        <CommandBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <AppBarButton
+                x:Name="CreateNewEntryButton" 
+                Icon="NewWindow" 
+                Label="New" 
+                ToolTipService.ToolTip="New (Ctrl+N)" Click="CreateNewEntryButton_Click">                
+            </AppBarButton>
+            
+        </CommandBar>
 
-        <ListView Name="EntriesListView"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" />
+        <CalendarView HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"/>
+
+        <ListView Name="EntriesListView"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" />
 
 
-        <Pivot x:Name="rootPivot" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" >
+        <Pivot x:Name="rootPivot" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
             <PivotItem Header="Entry1">
-                <RichEditBox Name="MainRichEdit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+                <RichEditBox Name="MainRichEdit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
             </PivotItem>
             <PivotItem Header="Entry2">
-                <RichEditBox Name="MainRichEdit2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+                <RichEditBox Name="MainRichEdit2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
             </PivotItem>
         </Pivot>
 
