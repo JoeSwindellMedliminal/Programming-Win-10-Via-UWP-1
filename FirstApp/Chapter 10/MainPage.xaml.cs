@@ -1,13 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-
-using System.Diagnostics;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace Chapter_9
+namespace Chapter_10
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -27,7 +35,7 @@ namespace Chapter_9
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void CreateNewEntryButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +50,7 @@ namespace Chapter_9
             reb.VerticalAlignment = VerticalAlignment.Stretch;
 
             currentJournalEntries.Add(
-                new JournalEntry(reb, 
+                new JournalEntry(reb,
                     Path.Combine(appHomeFolder.Path),
                     YMFolder, entryText));
 
@@ -94,7 +102,7 @@ namespace Chapter_9
             }
         }
 
-         private void MainCalendar_Loaded(object sender, RoutedEventArgs e)
+        private void MainCalendar_Loaded(object sender, RoutedEventArgs e)
         {
             MainCalendar.SelectedDates.Add(DateTime.Now);
         }
@@ -106,8 +114,7 @@ namespace Chapter_9
                 rootPivot.Items.RemoveAt(rootPivot.Items.Count - 1);
             }
             currentJournalEntries.Clear();
-            YMFolder = MainCalendar.SelectedDates[0].ToString("yyyy-MM");
-            Debug.WriteLine(YMFolder.ToString());
+            YMFolder = MainCalendar.SelectedDates[0].ToString("yyyy-MM");       
             LoadEntriesByDate();
         }
     }

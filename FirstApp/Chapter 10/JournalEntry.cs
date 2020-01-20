@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 using System.Diagnostics;
 
 
-namespace Chapter_9
+namespace Chapter_10
 {
     public class JournalEntry
     {

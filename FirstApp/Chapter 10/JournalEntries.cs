@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chapter_9
+namespace Chapter_10
 {
     public class JournalEntries : List<JournalEntry>
     {
