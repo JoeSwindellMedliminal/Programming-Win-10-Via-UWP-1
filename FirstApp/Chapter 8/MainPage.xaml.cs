@@ -12,7 +12,7 @@ namespace Chapter_8
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private RichEditBox currentRichEditBox;
+        private JournalEntry journalEntry;
         private int counter;
 
         public MainPage()
@@ -54,12 +54,7 @@ namespace Chapter_8
 
         private async void SaveEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            Windows.Storage.StorageFile sampleFile = await storageFolder.CreateFileAsync("FirstRichEdit.rtf", Windows.Storage.CreationCollisionOption.ReplaceExisting);
-
-            IRandomAccessStream documentStream = await sampleFile.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
-            currentRichEditBox.Document.SaveToStream(Windows.UI.Text.TextGetOptions.FormatRtf, documentStream);
-            documentStream.Dispose();
+            journalEntry.Save();
         }
 
         private void rootPivot_GotFocus(object sender, RoutedEventArgs e)
@@ -79,7 +74,7 @@ namespace Chapter_8
         {
             RichEditBox reb = pi.Content as RichEditBox;
             reb.Focus(FocusState.Keyboard);
-            currentRichEditBox = reb;
+            journalEntry = new JournalEntry(reb);
         }
     }
 }
