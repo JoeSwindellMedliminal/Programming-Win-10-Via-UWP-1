@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Chapter_8.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chapter_8"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <CommandBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <AppBarButton
+                x:Name="CreateNewEntryButton" 
+                Icon="NewWindow" 
+                Label="New" 
+                ToolTipService.ToolTip="New (Ctrl+N)" Click="CreateNewEntryButton_Click">
+            </AppBarButton>
+            <AppBarButton
+                x:Name="SaveEntryButton" 
+                Icon="Save" 
+                Label="Save" 
+                ToolTipService.ToolTip="New (Ctrl+N)" Click="SaveEntryButton_Click">
+            </AppBarButton>
+
+        </CommandBar>
+
+        <CalendarView HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"/>
+
+        <ListView Name="EntriesListView"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" />
+
+
+        <Pivot x:Name="rootPivot" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" GotFocus="rootPivot_GotFocus" >
+            <PivotItem Header="Entry1" Loaded="PivotItem_Loaded">
+                <RichEditBox Name="MainRichEdit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
